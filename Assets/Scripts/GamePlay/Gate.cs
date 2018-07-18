@@ -3,7 +3,7 @@ using TruePong.Utils;
 using TrueSync;
 using UnityEngine;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public enum GateSide {
         Top,
         Bottom

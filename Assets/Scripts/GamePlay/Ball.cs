@@ -1,9 +1,7 @@
 ﻿using TrueSync;
 using UnityEngine;
-using MonoBehaviour = Photon.MonoBehaviour;
-using Random = System.Random;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class Ball : TrueSyncBehaviour {
         [SerializeField]
         private TSRigidBody2D rigidBody;

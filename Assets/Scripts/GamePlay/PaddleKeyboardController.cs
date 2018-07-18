@@ -1,7 +1,7 @@
 ﻿using TrueSync;
 using UnityEngine;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class PaddleKeyboardController : TrueSyncBehaviour{
         private Paddle paddle;
 

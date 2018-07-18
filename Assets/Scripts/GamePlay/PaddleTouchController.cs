@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using TrueSync;
+﻿using TrueSync;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class PaddleTouchController : TrueSyncBehaviour, IDragHandler {
         private Paddle paddle;
         private FP lastInput;

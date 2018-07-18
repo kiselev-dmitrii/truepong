@@ -13,8 +13,7 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.4f1</UnityVersion>
@@ -182,15 +181,15 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets\Scripts\Ball.cs" />
-    <Compile Include="Assets\Scripts\Game.cs" />
-    <Compile Include="Assets\Scripts\Gate.cs" />
-    <Compile Include="Assets\Scripts\InputType.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Game.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Gate.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\InputType.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Paddle.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PaddleKeyboardController.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
     <Compile Include="Assets\Scripts\LobbyManager.cs" />
-    <Compile Include="Assets\Scripts\Paddle.cs" />
-    <Compile Include="Assets\Scripts\PaddleKeyboardController.cs" />
-    <Compile Include="Assets\Scripts\PaddleTouchController.cs" />
-    <Compile Include="Assets\Scripts\TriggerZone.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineNode.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineScheduler.cs" />

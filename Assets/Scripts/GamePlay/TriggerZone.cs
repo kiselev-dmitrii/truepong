@@ -1,9 +1,8 @@
 ﻿using System;
 using TruePong.Utils;
 using TrueSync;
-using UnityEngine;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class TriggerZone : TrueSyncBehaviour {
         public event Action<TSCollision2D> OnEnter;
         public event Action<TSCollision2D> OnExit;

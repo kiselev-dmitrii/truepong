@@ -1,7 +1,7 @@
 ﻿using TrueSync;
 using UnityEngine;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class Paddle : TrueSyncBehaviour {
         public FP Offset { get { return offset; } }
         public GameObject Hadle { get { return handle; } }

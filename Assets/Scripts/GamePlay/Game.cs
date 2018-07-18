@@ -1,8 +1,7 @@
-﻿using System;
-using TrueSync;
+﻿using TrueSync;
 using UnityEngine;
 
-namespace TruePong {
+namespace TruePong.GamePlay {
     public class Game : TrueSyncBehaviour {
         [SerializeField]
         private Gate[] gates;
