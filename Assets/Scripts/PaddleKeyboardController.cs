@@ -1,0 +1,26 @@
+﻿using TrueSync;
+using UnityEngine;
+
+namespace TruePong {
+    public class PaddleKeyboardController : TrueSyncBehaviour{
+        [SerializeField]
+        private Paddle paddle;
+
+        public override void OnSyncedInput() {
+            FP input = 0;
+
+            if (Input.GetKey(KeyCode.LeftArrow)) {
+                input = -0.1;
+            } else if (Input.GetKey(KeyCode.RightArrow)) {
+                input = 0.1;
+            }
+
+            TrueSyncInput.SetFP((byte)InputType.Paddle, input);
+        }
+
+        public override void OnSyncedUpdate() {
+            var paddleDeltaOffset = TrueSyncInput.GetFP((byte)InputType.Paddle);
+            paddle.SetOffset(paddle.Offset + paddleDeltaOffset);
+        }
+    }
+}

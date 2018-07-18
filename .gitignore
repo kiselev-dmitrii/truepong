@@ -1,0 +1,7 @@
+/.vs
+/.idea
+/Library
+/obj
+/Temp
+/Build/*
+/Assets/Deprecated*

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruePong", "TruePong.csproj", "{D6D6CF9D-AD0F-78D7-A5AE-3551DD68501A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruePong.Plugins", "TruePong.Plugins.csproj", "{2D49DA82-7992-E5A7-172D-EE995F1B8F9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruePong.Editor", "TruePong.Editor.csproj", "{9B6484BA-6B0B-982F-D095-5FA825F993F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6D6CF9D-AD0F-78D7-A5AE-3551DD68501A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D6CF9D-AD0F-78D7-A5AE-3551DD68501A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D6CF9D-AD0F-78D7-A5AE-3551DD68501A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D6CF9D-AD0F-78D7-A5AE-3551DD68501A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D49DA82-7992-E5A7-172D-EE995F1B8F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D49DA82-7992-E5A7-172D-EE995F1B8F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D49DA82-7992-E5A7-172D-EE995F1B8F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D49DA82-7992-E5A7-172D-EE995F1B8F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6484BA-6B0B-982F-D095-5FA825F993F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6484BA-6B0B-982F-D095-5FA825F993F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6484BA-6B0B-982F-D095-5FA825F993F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6484BA-6B0B-982F-D095-5FA825F993F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
