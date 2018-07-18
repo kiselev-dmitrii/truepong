@@ -13,7 +13,8 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.4f1</UnityVersion>
@@ -114,6 +115,24 @@
     <Compile Include="Assets\Deprecated\OldScenes\PlayerMovement.cs" />
     <Compile Include="Assets\Deprecated\OldScenes\PlayerWeapon.cs" />
     <Compile Include="Assets\Deprecated\OldScenes\Projectile.cs" />
+    <Compile Include="Assets\Packages\NData\BaseBinding.cs" />
+    <Compile Include="Assets\Packages\NData\Binding.cs" />
+    <Compile Include="Assets\Packages\NData\BooleanBinding.cs" />
+    <Compile Include="Assets\Packages\NData\CommandBinding.cs" />
+    <Compile Include="Assets\Packages\NData\Core\Collection.cs" />
+    <Compile Include="Assets\Packages\NData\Core\Command.cs" />
+    <Compile Include="Assets\Packages\NData\Core\Context.cs" />
+    <Compile Include="Assets\Packages\NData\Core\Property.cs" />
+    <Compile Include="Assets\Packages\NData\Core\ReadonlyProperty.cs" />
+    <Compile Include="Assets\Packages\NData\Core\VariableContext.cs" />
+    <Compile Include="Assets\Packages\NData\DataContext.cs" />
+    <Compile Include="Assets\Packages\NData\ItemDataContext.cs" />
+    <Compile Include="Assets\Packages\NData\MasterPath.cs" />
+    <Compile Include="Assets\Packages\NData\MultiBinding.cs" />
+    <Compile Include="Assets\Packages\NData\RootContext.cs" />
+    <Compile Include="Assets\Packages\NData\Utils\Evaluator.cs" />
+    <Compile Include="Assets\Packages\NData\Utils\ReflectionUtils.cs" />
+    <Compile Include="Assets\Packages\NData\Utils\Utils.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -181,6 +200,10 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
+    <Compile Include="Assets\Scripts\Application.cs" />
+    <Compile Include="Assets\Scripts\Controllers\LobbyController.cs" />
+    <Compile Include="Assets\Scripts\Defs\BallDef.cs" />
+    <Compile Include="Assets\Scripts\Defs\GameDef.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Game.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Gate.cs" />
@@ -189,8 +212,23 @@
     <Compile Include="Assets\Scripts\GamePlay\PaddleKeyboardController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
-    <Compile Include="Assets\Scripts\LobbyManager.cs" />
+    <Compile Include="Assets\Scripts\UI\MainScreen.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\Popup.cs" />
+    <Compile Include="Assets\Scripts\Utils\TransformUtils.cs" />
+    <Compile Include="Assets\Scripts\Utils\Window.cs" />
+    <Compile Include="Assets\Scripts\View\BoolActiveBinding.cs" />
+    <Compile Include="Assets\Scripts\View\BoolColorBinding.cs" />
+    <Compile Include="Assets\Scripts\View\ClickBinding.cs" />
+    <Compile Include="Assets\Scripts\View\FillAmountBinding.cs" />
+    <Compile Include="Assets\Scripts\View\FloatTextBinding.cs" />
+    <Compile Include="Assets\Scripts\View\GridBinding.cs" />
+    <Compile Include="Assets\Scripts\View\InteractableBinding.cs" />
+    <Compile Include="Assets\Scripts\View\IntTextBinding.cs" />
+    <Compile Include="Assets\Scripts\View\PrefabBinding.cs" />
+    <Compile Include="Assets\Scripts\View\SpriteBinding.cs" />
+    <Compile Include="Assets\Scripts\View\StringTextBinding.cs" />
+    <Compile Include="Assets\Scripts\View\TextBinding.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineNode.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineScheduler.cs" />
     <Compile Include="Assets\TrueSync\Engine\InputData.cs" />
