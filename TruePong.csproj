@@ -77,14 +77,14 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2017.1.4f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets/Plugins/Photon3Unity3D.dll</HintPath>
+    </Reference>
     <Reference Include="TrueSync">
       <HintPath>Assets/Plugins/TrueSync.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets/Plugins/Photon3Unity3D.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -184,11 +184,14 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\InputType.cs" />
     <Compile Include="Assets\Scripts\LobbyManager.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\PaddleKeyboardController.cs" />
     <Compile Include="Assets\Scripts\PaddleTouchController.cs" />
+    <Compile Include="Assets\Scripts\TriggerZone.cs" />
+    <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineNode.cs" />
     <Compile Include="Assets\TrueSync\Engine\Coroutine\CoroutineScheduler.cs" />
     <Compile Include="Assets\TrueSync\Engine\InputData.cs" />
