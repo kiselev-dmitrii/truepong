@@ -6,13 +6,15 @@ namespace TruePong.GamePlay {
     public class PaddleTouchController : TrueSyncBehaviour, IDragHandler {
         private Paddle paddle;
         private FP lastInput;
+        private byte inputIndex;
 
         protected void Awake() {
             lastInput = 0;
         }
 
-        public void SetPaddle(Paddle paddle) {
+        public void Initialize(Paddle paddle, byte inputIndex) {
             this.paddle = paddle;
+            this.inputIndex = inputIndex;
             owner = paddle.owner;
         }
 
@@ -29,12 +31,12 @@ namespace TruePong.GamePlay {
         }
 
         public override void OnSyncedInput() {
-            TrueSyncInput.SetFP((byte)InputType.Paddle, lastInput);
+            TrueSyncInput.SetFP(inputIndex, lastInput);
             lastInput = 0;
         }
 
         public override void OnSyncedUpdate() {
-            var paddleDeltaOffset = TrueSyncInput.GetFP((byte)InputType.Paddle);
+            var paddleDeltaOffset = TrueSyncInput.GetFP(inputIndex);
             paddle.SetOffset(paddle.Offset + paddleDeltaOffset);
         }
     }

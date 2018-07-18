@@ -201,13 +201,13 @@
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\Application.cs" />
+    <Compile Include="Assets\Scripts\Controllers\HotseatController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LobbyController.cs" />
     <Compile Include="Assets\Scripts\Defs\BallDef.cs" />
     <Compile Include="Assets\Scripts\Defs\GameDef.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Game.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Gate.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\InputType.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Paddle.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PaddleKeyboardController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />

@@ -10,7 +10,9 @@ namespace TruePong {
 
         protected void Awake() {
             var lobbyController = LobbyController.Create();
-            var mainScreen = new MainScreen(lobbyController);
+            var hotseatController = new HotseatController();
+
+            var mainScreen = new MainScreen(lobbyController, hotseatController);
             mainScreen.SetActive(true);
         }
     }

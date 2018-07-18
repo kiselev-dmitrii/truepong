@@ -4,9 +4,11 @@ using UnityEngine;
 namespace TruePong.GamePlay {
     public class PaddleKeyboardController : TrueSyncBehaviour{
         private Paddle paddle;
+        private byte inputIndex;
 
-        public void SetPaddle(Paddle paddle) {
+        public void Initialize(Paddle paddle, byte inputIndex) {
             this.paddle = paddle;
+            this.inputIndex = inputIndex;
             owner = paddle.owner;
         }
 
@@ -19,11 +21,11 @@ namespace TruePong.GamePlay {
                 input = 0.1;
             }
 
-            TrueSyncInput.SetFP((byte)InputType.Paddle, input);
+            TrueSyncInput.SetFP(inputIndex, input);
         }
 
         public override void OnSyncedUpdate() {
-            var paddleDeltaOffset = TrueSyncInput.GetFP((byte)InputType.Paddle);
+            var paddleDeltaOffset = TrueSyncInput.GetFP(inputIndex);
             paddle.SetOffset(paddle.Offset + paddleDeltaOffset);
         }
     }
