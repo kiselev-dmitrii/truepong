@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 namespace TruePong {
     public class PaddleTouchController : TrueSyncBehaviour, IDragHandler {
         private Paddle paddle;
-        private FP _lastInput;
+        private FP lastInput;
 
-        public void Awake() {
-            _lastInput = 0;
+        protected void Awake() {
+            lastInput = 0;
         }
 
         public void SetPaddle(Paddle paddle) {
@@ -26,13 +26,13 @@ namespace TruePong {
             var previousWorldPosition = Camera.main.ScreenToWorldPoint(previousPosition);
 
             var worldDelta = currentWorldPosition - previousWorldPosition;
-            _lastInput = worldDelta.x;
+            lastInput = worldDelta.x;
 
         }
 
         public override void OnSyncedInput() {
-            TrueSyncInput.SetFP((byte)InputType.Paddle, _lastInput);
-            _lastInput = 0;
+            TrueSyncInput.SetFP((byte)InputType.Paddle, lastInput);
+            lastInput = 0;
         }
 
         public override void OnSyncedUpdate() {

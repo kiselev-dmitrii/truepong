@@ -3,8 +3,12 @@ using UnityEngine;
 
 namespace TruePong {
     public class PaddleKeyboardController : TrueSyncBehaviour{
-        [SerializeField]
         private Paddle paddle;
+
+        public void SetPaddle(Paddle paddle) {
+            this.paddle = paddle;
+            owner = paddle.owner;
+        }
 
         public override void OnSyncedInput() {
             FP input = 0;

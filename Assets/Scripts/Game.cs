@@ -16,6 +16,10 @@ namespace TruePong {
                 var spawnPointIdx = paddle.owner.Id % spawnPoints.Length;
                 var spawnPoint = spawnPoints[spawnPointIdx];
                 paddle.SetAnchor(spawnPoint);
+
+                var paddleController = paddle.Hadle.AddComponent<PaddleTouchController>();
+                TrueSyncManager.RegisterITrueSyncBehaviour(paddleController);
+                paddleController.SetPaddle(paddle);
             }
 
             GameObject go = TrueSyncManager.SyncedInstantiate(ballPrefab.gameObject, ballSpawnPoint.position, TSQuaternion.identity);
