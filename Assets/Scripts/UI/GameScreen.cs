@@ -33,7 +33,7 @@ namespace TruePong.UI {
             this.lobbyController = lobbyController;
 
             playerGate = game.Gates.First(x => x.Paddle.owner == TrueSyncManager.LocalPlayer);
-            enemyGate = game.Gates.First(x => x.Paddle.owner != TrueSyncManager.LocalPlayer);
+            enemyGate = game.Gates.First(x => x != playerGate);
         }
 
         public void Update() {
