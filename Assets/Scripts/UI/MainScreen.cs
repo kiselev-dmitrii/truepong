@@ -16,8 +16,18 @@ namespace TruePong.UI {
         }
 
         public void OnMultiplayerButtonClick() {
+            var window = new WaitWindow("Wait, please");
+            window.SetActive(true);
+
             lobbyController.SetMode(GameMode.Multiplayer);
-            lobbyController.StartGame(null, null);
+            lobbyController.StartGame(
+                () => {
+                    window.Destroy();
+                },
+                () => {
+                    window.Destroy();
+                }
+            );
         }
     }
 }

@@ -215,6 +215,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
     <Compile Include="Assets\Scripts\UI\MainScreen.cs" />
+    <Compile Include="Assets\Scripts\UI\WaitWindow.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Popup.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneUtils.cs" />
