@@ -58,7 +58,6 @@ namespace TruePong.Controllers.Lobby {
             }
 
             State = LobbyState.Disconnected;
-            PhotonNetwork.offlineMode = true;
         }
 
         public override void OnJoinedLobby() {

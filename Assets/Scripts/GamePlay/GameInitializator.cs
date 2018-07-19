@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+using TruePong.Controllers.Lobby;
 using TruePong.Defs;
+using TruePong.UI;
 using TrueSync;
 using UnityEngine;
+using Object = System.Object;
 
 namespace TruePong.GamePlay {
     public class GameInitializator : TrueSyncBehaviour {
@@ -16,9 +19,12 @@ namespace TruePong.GamePlay {
         private Ball ballPrefab;
 
         private GameDef gameDef;
+        private LobbyController lobbyController;
+        private GameScreen gameScreen;
 
-        public void Initialize(GameDef gameDef) {
+        public void Initialize(GameDef gameDef, LobbyController lobbyController) {
             this.gameDef = gameDef;
+            this.lobbyController = lobbyController;
         }
 
         public override void OnSyncedStart() {
@@ -51,6 +57,13 @@ namespace TruePong.GamePlay {
             game.AddBall(ball);
 
             game.Restart();
+
+            gameScreen = new GameScreen(lobbyController, game);
+            gameScreen.SetActive(true);
+        }
+
+        public override void OnSyncedUpdate() {
+            gameScreen.Update();
         }
 
         public void OnDestroy() {

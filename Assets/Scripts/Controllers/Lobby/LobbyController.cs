@@ -40,7 +40,7 @@ namespace TruePong.Controllers.Lobby {
             currentLauncher.StartGame(
                 (scene) => {
                     var initializator = scene.GetComponent<GameInitializator>();
-                    initializator.Initialize(gameDef);
+                    initializator.Initialize(gameDef, this);
                 },
                 onFailed
             );
