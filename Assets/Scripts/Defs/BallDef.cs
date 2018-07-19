@@ -1,10 +1,11 @@
+using TrueSync;
 using UnityEngine;
 
 namespace TruePong.Defs {
     [CreateAssetMenu(menuName = "Game/BallDef")]
     public class BallDef : ScriptableObject {
-        public float Speed;
-        public float Size;
+        public FP Speed;
+        public FP Size;
         public Color Color;
     }
 }

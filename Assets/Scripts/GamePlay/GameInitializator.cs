@@ -1,9 +1,10 @@
 ﻿using System.Linq;
+using TruePong.Defs;
 using TrueSync;
 using UnityEngine;
 
 namespace TruePong.GamePlay {
-    public class GameLauncher : TrueSyncBehaviour {
+    public class GameInitializator : TrueSyncBehaviour {
         [SerializeField]
         private Game game;
         [SerializeField]
@@ -14,8 +15,14 @@ namespace TruePong.GamePlay {
         [SerializeField]
         private Ball ballPrefab;
 
+        private GameDef gameDef;
+
+        public void Initialize(GameDef gameDef) {
+            this.gameDef = gameDef;
+        }
+
         public override void OnSyncedStart() {
-            game.Initialize();
+            game.Initialize(gameDef);
 
             if (PhotonNetwork.offlineMode) {
                 var paddle1 = TrueSyncManager.SyncedInstantiate(paddlePrefab.gameObject).GetComponent<Paddle>();
@@ -44,6 +51,10 @@ namespace TruePong.GamePlay {
             game.AddBall(ball);
 
             game.Restart();
+        }
+
+        public void OnDestroy() {
+            game.Dispose();
         }
     }
 }

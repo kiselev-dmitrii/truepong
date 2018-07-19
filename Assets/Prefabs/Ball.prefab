@@ -144,6 +144,8 @@ MonoBehaviour:
     id: 0
     name: 
   rigidBody: {fileID: 114045236511882034}
+  boxCollider: {fileID: 114526309078124018}
+  spriteRenderer: {fileID: 212678926808363180}
 --- !u!212 &212678926808363180
 SpriteRenderer:
   m_ObjectHideFlags: 1

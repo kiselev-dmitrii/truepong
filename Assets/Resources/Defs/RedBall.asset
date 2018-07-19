@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64bea647014ee5e4892532f24107d4b3, type: 3}
   m_Name: RedBall
   m_EditorClassIdentifier: 
-  Speed: 1
-  Size: 1
+  Speed:
+    _serializedValue: 4294967296
+  Size:
+    _serializedValue: 343597376
   Color: {r: 1, g: 0, b: 0, a: 1}

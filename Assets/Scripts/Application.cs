@@ -1,4 +1,5 @@
 ﻿using TruePong.Controllers;
+using TruePong.Controllers.Lobby;
 using TruePong.Defs;
 using TruePong.UI;
 using UnityEngine;
@@ -9,10 +10,8 @@ namespace TruePong {
         private GameDef gameDef;
 
         protected void Awake() {
-            var lobbyController = LobbyController.Create();
-            var hotseatController = new HotseatController();
-
-            var mainScreen = new MainScreen(lobbyController, hotseatController);
+            var lobbyController = new LobbyController(gameDef);
+            var mainScreen = new MainScreen(lobbyController);
             mainScreen.SetActive(true);
         }
     }

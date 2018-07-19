@@ -1,22 +1,34 @@
 ﻿using System;
 using System.Linq;
+using TruePong.Defs;
 using TrueSync;
 using UnityEngine;
 
 namespace TruePong.GamePlay {
-    public class Game : TrueSyncBehaviour {
+    public class Game : TrueSyncBehaviour, IDisposable {
         [SerializeField]
         private Gate[] gates;
         [SerializeField]
         private TSTransform2D ballSpawnPoint;
 
+        private GameDef gameDef;
         private Ball ball;
+        [AddTracking]
+        private int ballIdx;
 
         public Gate[] Gates { get { return gates; } }
 
-        public void Initialize() {
+
+        public void Initialize(GameDef gameDef) {
+            this.gameDef = gameDef;
             foreach (var gate in gates) {
                 gate.OnScoreChanged += OnScoreChanged;
+            }
+        }
+
+        public void Dispose() {
+            foreach (var gate in gates) {
+                gate.OnScoreChanged -= OnScoreChanged;
             }
         }
 
@@ -42,6 +54,9 @@ namespace TruePong.GamePlay {
 
         public void Restart() {
             ball.Reset(ballSpawnPoint.position);
+
+            ballIdx = TSRandom.Range(0, gameDef.Balls.Length);
+            ball.Configure(gameDef.Balls[ballIdx]);
         }
 
         private void OnScoreChanged() {

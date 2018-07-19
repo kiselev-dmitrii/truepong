@@ -1,19 +1,31 @@
-﻿using TrueSync;
+﻿using TruePong.Defs;
+using TrueSync;
 using UnityEngine;
 
 namespace TruePong.GamePlay {
     public class Ball : TrueSyncBehaviour {
         [SerializeField]
         private TSRigidBody2D rigidBody;
+        [SerializeField]
+        private TSBoxCollider2D boxCollider;
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
 
         [AddTracking]
         private TSVector2 direction;
+        [AddTracking]
+        private FP speed = 1;
 
         public void Reset(TSVector2 position) {
             tsTransform2D.position = position;
             rigidBody.position = position;
-
             direction = GenerateRandomDirection();
+        }
+
+        public void Configure(BallDef ballDef) {
+            speed = ballDef.Speed;
+            boxCollider.size = TSVector2.one * ballDef.Size;
+            spriteRenderer.color = ballDef.Color;
         }
 
         public void OnSyncedCollisionEnter(TSCollision2D other) {
@@ -22,7 +34,7 @@ namespace TruePong.GamePlay {
         }
 
         public override void OnSyncedUpdate() {
-            rigidBody.position += direction * TrueSyncManager.DeltaTime;
+            rigidBody.position += direction * TrueSyncManager.DeltaTime * speed;
         }
 
         private static TSVector2 GenerateRandomDirection() {
