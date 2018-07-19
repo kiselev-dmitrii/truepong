@@ -26,6 +26,8 @@ namespace TruePong.Controllers {
         }
 
         public void StartGame() {
+            PhotonNetwork.offlineMode = false;
+
             if (State != LobbyState.Disconnected) {
                 throw new InvalidOperationException("Game must be disconnected");
             }
@@ -47,6 +49,7 @@ namespace TruePong.Controllers {
             }
 
             State = LobbyState.Disconnected;
+            PhotonNetwork.offlineMode = true;
         }
 
         public override void OnJoinedLobby() {

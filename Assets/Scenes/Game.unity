@@ -801,7 +801,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11424684, guid: 0017db9755b5cb442a00a702420c1076, type: 2}
       propertyPath: playerPrefabs.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 489014, guid: 0017db9755b5cb442a00a702420c1076, type: 2}
       propertyPath: m_LocalPosition.x
@@ -843,6 +843,32 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0017db9755b5cb442a00a702420c1076, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1428430446 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 199134, guid: 0017db9755b5cb442a00a702420c1076, type: 2}
+  m_PrefabInternal: {fileID: 1428430445}
+--- !u!114 &1428430447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1428430446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a300120c221c58a40a3db834c42ceb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfPlayers: 0
+  ownerIndex: -1
+  owner:
+    id: 0
+    name: 
+  localOwner:
+    id: 0
+    name: 
+  game: {fileID: 1127877025}
+  paddlePrefab: {fileID: 114051427921103452, guid: ed056213f6980ed44aa286e0456a0944,
+    type: 2}
 --- !u!1 &1530289349
 GameObject:
   m_ObjectHideFlags: 0

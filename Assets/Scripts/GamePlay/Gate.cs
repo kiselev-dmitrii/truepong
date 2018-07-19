@@ -20,16 +20,21 @@ namespace TruePong.GamePlay {
         [AddTracking]
         private int score;
 
-        public TSTransform2D Anchor { get { return paddleAnchor; } }
         public int Score { get { return score; } }
+        public Paddle Paddle { get; private set; }
         public event Action OnScoreChanged;
 
-        public override void OnSyncedStart() {
+        public void Awake() {
             goalTrigger.OnEnter += OnGoal;
         }
 
         protected void OnDestroy() {
             goalTrigger.OnEnter -= OnGoal;
+        }
+
+        public void SetPaddle(Paddle paddle) {
+            Paddle = paddle;
+            paddle.SetAnchor(paddleAnchor);
         }
 
         private void OnGoal(TSCollision2D obj) {
