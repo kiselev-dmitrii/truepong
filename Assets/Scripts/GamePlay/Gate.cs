@@ -22,6 +22,8 @@ namespace TruePong.GamePlay {
 
         public int Score { get { return score; } }
         public Paddle Paddle { get; private set; }
+        public GateSide Side { get { return side; } }
+
         public event Action OnScoreChanged;
 
         public void Awake() {

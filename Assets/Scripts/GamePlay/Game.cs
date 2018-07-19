@@ -9,15 +9,12 @@ namespace TruePong.GamePlay {
         private Gate[] gates;
         [SerializeField]
         private TSTransform2D ballSpawnPoint;
-        [SerializeField]
-        private Ball ballPrefab;
 
         private Ball ball;
 
-        public void Initialize() {
-            GameObject go = TrueSyncManager.SyncedInstantiate(ballPrefab.gameObject, ballSpawnPoint.position, TSQuaternion.identity);
-            ball = go.GetComponent<Ball>();
+        public Gate[] Gates { get { return gates; } }
 
+        public void Initialize() {
             foreach (var gate in gates) {
                 gate.OnScoreChanged += OnScoreChanged;
             }
@@ -34,6 +31,13 @@ namespace TruePong.GamePlay {
             paddleController.Initialize(paddle, inputIdx);
 
             firstFreeGate.SetPaddle(paddle);
+        }
+
+        public void AddBall(Ball ball) {
+            if (this.ball != null) {
+                throw new InvalidOperationException("Game already has ball");
+            }
+            this.ball = ball;
         }
 
         public void Restart() {

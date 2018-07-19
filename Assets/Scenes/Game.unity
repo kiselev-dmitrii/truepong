@@ -139,7 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1127877026}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &101620412
 MonoBehaviour:
@@ -198,8 +198,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1127877026}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &189414580
 MonoBehaviour:
@@ -595,7 +595,7 @@ Transform:
   - {fileID: 2046926006}
   - {fileID: 765757937}
   m_Father: {fileID: 1127877026}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &798049636
 MonoBehaviour:
@@ -659,8 +659,6 @@ MonoBehaviour:
   - {fileID: 798049636}
   - {fileID: 1387792143}
   ballSpawnPoint: {fileID: 101620412}
-  ballPrefab: {fileID: 114952491932762776, guid: 4b97f62b5a7ad72408227e816868a9ef,
-    type: 2}
 --- !u!4 &1127877026
 Transform:
   m_ObjectHideFlags: 0
@@ -672,13 +670,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 189414579}
   - {fileID: 1651737678}
   - {fileID: 798049635}
   - {fileID: 1387792142}
   - {fileID: 101620411}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228814614
 GameObject:
@@ -768,7 +765,7 @@ Transform:
   - {fileID: 1228814615}
   - {fileID: 367715539}
   m_Father: {fileID: 1127877026}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1387792143
 MonoBehaviour:
@@ -867,7 +864,10 @@ MonoBehaviour:
     id: 0
     name: 
   game: {fileID: 1127877025}
+  camera: {fileID: 189414581}
   paddlePrefab: {fileID: 114051427921103452, guid: ed056213f6980ed44aa286e0456a0944,
+    type: 2}
+  ballPrefab: {fileID: 114952491932762776, guid: 4b97f62b5a7ad72408227e816868a9ef,
     type: 2}
 --- !u!1 &1530289349
 GameObject:
@@ -992,7 +992,7 @@ Transform:
   - {fileID: 698336852}
   - {fileID: 1530289350}
   m_Father: {fileID: 1127877026}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1651737679
 SpriteRenderer:
