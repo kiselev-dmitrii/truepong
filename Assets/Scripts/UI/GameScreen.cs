@@ -29,7 +29,7 @@ namespace TruePong.UI {
         private readonly Gate playerGate;
         private readonly Gate enemyGate;
 
-        public GameScreen(LobbyController lobbyController, Game game) : base("UI/GameScreen") {
+        public GameScreen(LobbyController lobbyController, Game game) : base("UI/GameScreen/GameScreen") {
             this.lobbyController = lobbyController;
 
             playerGate = game.Gates.First(x => x.Paddle.owner == TrueSyncManager.LocalPlayer);

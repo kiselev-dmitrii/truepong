@@ -204,6 +204,7 @@
     <Compile Include="Assets\Scripts\Utils\SceneUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\TransformUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Window.cs" />
+    <Compile Include="Assets\Scripts\View\AnimationOnChangeBinding.cs" />
     <Compile Include="Assets\Scripts\View\BoolActiveBinding.cs" />
     <Compile Include="Assets\Scripts\View\BoolColorBinding.cs" />
     <Compile Include="Assets\Scripts\View\ClickBinding.cs" />
