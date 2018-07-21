@@ -108,7 +108,6 @@
     <Compile Include="Assets\Deprecated\Demo\Pong\Scripts\PongSyncManager.cs" />
     <Compile Include="Assets\Deprecated\Demo\ReplayPicker.cs" />
     <Compile Include="Assets\Deprecated\Demo\ReplayUtils.cs" />
-    <Compile Include="Assets\Deprecated\Demo\SceneLoader.cs" />
     <Compile Include="Assets\Deprecated\Demo\SimulationPanelScript.cs" />
     <Compile Include="Assets\Deprecated\OldScenes\MainMenu.cs" />
     <Compile Include="Assets\Deprecated\OldScenes\PlayerMovement.cs" />
@@ -218,6 +217,7 @@
     <Compile Include="Assets\Scripts\UI\WaitWindow.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Popup.cs" />
+    <Compile Include="Assets\Scripts\Utils\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\TransformUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Window.cs" />

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TruePong.Controllers.Lobby {
-    public enum LobbyState {
+    public enum NetworkState {
         Disconnected,
         Connected,
         InGame
@@ -12,10 +12,10 @@ namespace TruePong.Controllers.Lobby {
 
     public class MultiplayerLauncher : Photon.PunBehaviour, IGameLauncher {
         public const int MaxPlayers = 2;
-        public LobbyState State { get; private set; }
+        public NetworkState state { get; private set; }
 
-        private Action<Scene> onSuccess;
-        private Action onFail;
+        private Action<Scene> onConnectionSucced;
+        private Action onConnectionFailed;
 
         public static MultiplayerLauncher Create() {
             var result = new GameObject(typeof(MultiplayerLauncher).Name)
@@ -26,42 +26,46 @@ namespace TruePong.Controllers.Lobby {
 
         private void Initialize() {
             DontDestroyOnLoad(gameObject);
-            State = LobbyState.Disconnected;
+            state = NetworkState.Disconnected;
             var view = gameObject.AddComponent<PhotonView>();
             view.viewID = 1;
         }
 
         public void StartGame(Action<Scene> onSuccess, Action onFail) {
-            PhotonNetwork.offlineMode = false;
-
-            if (State != LobbyState.Disconnected) {
+            if (state != NetworkState.Disconnected) {
                 throw new InvalidOperationException("Game must be disconnected");
             }
 
-            this.onSuccess = onSuccess;
-            this.onFail = onFail;
+            onConnectionSucced = onSuccess;
+            onConnectionFailed = onFail;
 
+            PhotonNetwork.offlineMode = false;
             PhotonNetwork.ConnectUsingSettings("v1.0");
         }
 
-        public void LeaveGame() {
-            if (State == LobbyState.Disconnected) {
-                throw new InvalidOperationException("You are not in game");
-            }
+        public void LeaveGame(Action<Scene> onSuccess) {
+            switch (state) {
+                case NetworkState.Disconnected:
+                    throw new InvalidOperationException("You are not in game");
 
-            if (State == LobbyState.Connected) {
-                PhotonNetwork.Disconnect();
-            }
+                case NetworkState.Connected:
+                    PhotonNetwork.Disconnect();
+                    state = NetworkState.Disconnected;
+                    onSuccess.TryCall(SceneLoader.GetActiveScene());
+                    break;
 
-            if (State == LobbyState.InGame) {
-                SceneManager.LoadScene("Scenes/Lobby");
+                case NetworkState.InGame:
+                    PhotonNetwork.Disconnect();
+                    SceneLoader.LoadScene("Scenes/Lobby", (scene) => {
+                        state = NetworkState.Disconnected;
+                        onSuccess.TryCall(scene);
+                    });
+                    break;
             }
-
-            State = LobbyState.Disconnected;
         }
 
         public override void OnJoinedLobby() {
-            State = LobbyState.Connected;
+            state = NetworkState.Connected;
             var roomOptions = new RoomOptions() {
                 MaxPlayers = MaxPlayers
             };
@@ -70,8 +74,9 @@ namespace TruePong.Controllers.Lobby {
         }
 
         public override void OnConnectionFail(DisconnectCause cause) {
-            State = LobbyState.Disconnected;
-            onFail.TryCall();
+            state = NetworkState.Disconnected;
+            onConnectionFailed.TryCall();
+            onConnectionFailed = null;
         }
 
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer) {
@@ -82,15 +87,11 @@ namespace TruePong.Controllers.Lobby {
 
         [PunRPC]
         public void StartMatch() {
-            SceneManager.sceneLoaded += OnSceneLoaded;
             PhotonNetwork.LoadLevel("Scenes/Game");
-            State = LobbyState.InGame;
+            SceneLoader.WaitLoading((scene) => {
+                state = NetworkState.InGame;
+                onConnectionSucced.TryCall(scene);
+            });
         }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-            onSuccess.TryCall(SceneManager.GetActiveScene());
-        }
-
     }
 }

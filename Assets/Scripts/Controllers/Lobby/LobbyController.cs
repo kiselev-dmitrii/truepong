@@ -11,13 +11,24 @@ namespace TruePong.Controllers.Lobby {
         Multiplayer
     }
 
+    public enum GameState {
+        Menu,
+        Starting,
+        InGame,
+        Leaving
+
+    }
+
     public interface IGameLauncher {
         void StartGame(Action<Scene> onSuccess, Action onFail);
-        void LeaveGame();
+        void LeaveGame(Action<Scene> onSuccess);
     }
 
     public class LobbyController {
         public GameMode GameMode { get; private set; }
+
+        public GameState GameState { get; private set; }
+        public event Action OnGameStateChanged;
 
         private readonly GameDef gameDef;
         private readonly Dictionary<GameMode, IGameLauncher> launchers;
@@ -29,6 +40,9 @@ namespace TruePong.Controllers.Lobby {
                 {GameMode.Hotseat, new HotseatLauncher()},
                 {GameMode.Multiplayer, MultiplayerLauncher.Create()}
             };
+
+            SetGameState(GameState.Menu, false);
+            SetMode(GameMode.Hotseat);
         }
 
         public void SetMode(GameMode mode) {
@@ -37,18 +51,32 @@ namespace TruePong.Controllers.Lobby {
         }
 
         public void StartGame(Action onSuccess, Action onFailed) {
+            SetGameState(GameState.Starting);
             currentLauncher.StartGame(
                 (scene) => {
                     var initializator = scene.GetComponent<GameInitializator>();
                     initializator.Initialize(gameDef, this);
+                    SetGameState(GameState.InGame);
+                    onSuccess.TryCall();
                 },
-                onFailed
+                () => {
+                    SetGameState(GameState.Menu);
+                    onFailed.TryCall();
+                }
             );
         }
 
-        public void LeaveGame() {
-            currentLauncher.LeaveGame();
+        public void LeaveGame(Action onSuccess) {
+            SetGameState(GameState.Leaving);
+            currentLauncher.LeaveGame((scene) => {
+                SetGameState(GameState.Menu);
+                onSuccess.TryCall();
+            });
         }
-        
+
+        private void SetGameState(GameState gameState, bool raiseEvent = true) {
+            GameState = gameState;
+            if (raiseEvent) OnGameStateChanged.TryCall();
+        }
     }
 }
