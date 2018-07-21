@@ -23,6 +23,7 @@ namespace TruePong.GamePlay {
             tsTransform2D.position = position;
             rigidBody.position = position;
             direction = directionGenerator.GenerateDirection();
+            renderer.ClearTrail();
         }
 
         public void Configure(BallDef ballDef) {

@@ -33,5 +33,9 @@ namespace TruePong.GamePlay {
             spritesTransform.localScale = Vector3.one * size;
             trailRenderer.widthMultiplier = size;
         }
+
+        public void ClearTrail() {
+            trailRenderer.Clear();
+        }
     }
 }
