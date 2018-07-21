@@ -25,4 +25,4 @@ BallDef содержит настройки размера, скорости, ц
 - RandomDirectionGenerator - начальное направление шара полностью случайно.
 - SpreadDirectionGenerator - генерирует направление в направлении случайного игрока с разбросом в SpreadAngle.
 
-Последнюю версию для Android можно скачать по ссылке https://bitbucket.org/sollinux/truepong/downloads/
+Последнюю версию для Android можно скачать по ссылке https://bitbucket.org/sollinux/truepong/downloads/TruePong.apk
