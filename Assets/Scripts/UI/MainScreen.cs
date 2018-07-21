@@ -17,6 +17,8 @@ namespace TruePong.UI {
         }
         #endregion
 
+        private CommonDialog waitWindow;
+
         public MainScreen(LobbyController lobbyController) : base("UI/MainScreen") {
             this.lobbyController = lobbyController;
             lobbyController.OnGameStateChanged += OnGameStateChanged;
@@ -37,7 +39,20 @@ namespace TruePong.UI {
         }
 
         private void OnGameStateChanged() {
-            IsLoading = lobbyController.GameState == GameState.Starting;
+            if (lobbyController.GameMode == GameMode.Hotseat) return;
+
+            if (lobbyController.GameState == GameState.Starting) {
+                waitWindow = new CommonDialog("WAITING FOR PLAYERS", "PLEASE WAIT OTHER PLAYERS");
+                waitWindow.AddButton("CANCEL", () => {
+                    lobbyController.LeaveGame();
+                });
+                waitWindow.SetActive(true);
+            } else {
+                if (waitWindow != null) {
+                    waitWindow.Destroy();
+                    waitWindow = null;
+                }
+            }
         }
     }
 }

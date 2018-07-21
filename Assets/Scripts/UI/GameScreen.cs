@@ -42,7 +42,12 @@ namespace TruePong.UI {
         }
 
         public void OnLeaveButtonClick() {
-            lobbyController.LeaveGame();
+            var confirmationDialog = new CommonDialog("EXIT TO MAIN MENU?", "ARE YOU SURE?");
+            confirmationDialog.AddButton("YES", () => {
+                lobbyController.LeaveGame();
+            });
+            confirmationDialog.AddButton("NO", null);
+            confirmationDialog.SetActive(true);
         }
     }
 }

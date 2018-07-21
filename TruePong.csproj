@@ -13,7 +13,8 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.1.4f1</UnityVersion>
@@ -194,6 +195,7 @@
     <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\SpriteColor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonDialog.cs" />
     <Compile Include="Assets\Scripts\UI\GameScreen.cs" />
     <Compile Include="Assets\Scripts\UI\MainScreen.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
