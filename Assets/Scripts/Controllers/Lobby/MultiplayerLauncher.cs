@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 namespace TruePong.Controllers.Lobby {
     public class MultiplayerLauncher : Photon.PunBehaviour, IGameLauncher {
+        private String lobbyScene;
+        private String gameScene;
+        private byte maxPlayers;
+        private GameState state;
+
+        private const String roomName = "room1";
+        private const String version = "v1.0";
+
         public event Action OnStateChanged;
         public GameState State {
             get { return state; }
@@ -14,17 +22,18 @@ namespace TruePong.Controllers.Lobby {
             }
         }
 
-        private GameState state;
-        private byte maxPlayers = 2;
-
-        public static MultiplayerLauncher Create() {
+        public static MultiplayerLauncher Create(String lobbyScene, String gameScene, byte maxPlayers) {
             var result = new GameObject(typeof(MultiplayerLauncher).Name)
                 .AddComponent<MultiplayerLauncher>();
-            result.Initialize();
+            result.Initialize(lobbyScene, gameScene, maxPlayers);
             return result;
         }
 
-        private void Initialize() {
+        private void Initialize(String lobbyScene, String gameScene, byte maxPlayers) {
+            this.lobbyScene = lobbyScene;
+            this.gameScene = gameScene;
+            this.maxPlayers = maxPlayers;
+
             DontDestroyOnLoad(gameObject);
             state = GameState.Menu;
 
@@ -39,7 +48,7 @@ namespace TruePong.Controllers.Lobby {
 
             State = GameState.Starting;
             PhotonNetwork.offlineMode = false;
-            PhotonNetwork.ConnectUsingSettings("v1.0");
+            PhotonNetwork.ConnectUsingSettings(version);
         }
 
         public void LeaveGame() {
@@ -54,7 +63,7 @@ namespace TruePong.Controllers.Lobby {
 
                 case GameState.InGame:
                     PhotonNetwork.Disconnect();
-                    SceneLoader.LoadScene("Scenes/Lobby", (scene) => {
+                    SceneLoader.LoadScene(lobbyScene, (scene) => {
                         State = GameState.Menu;
                     });
                     break;
@@ -66,7 +75,7 @@ namespace TruePong.Controllers.Lobby {
                 MaxPlayers = maxPlayers
             };
 
-            PhotonNetwork.JoinOrCreateRoom("room1", roomOptions, null);
+            PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, null);
         }
 
         public override void OnConnectionFail(DisconnectCause cause) {
@@ -87,7 +96,7 @@ namespace TruePong.Controllers.Lobby {
 
         [PunRPC]
         public void StartMatch() {
-            PhotonNetwork.LoadLevel("Scenes/Game");
+            PhotonNetwork.LoadLevel(gameScene);
             SceneLoader.WaitLoading((scene) => {
                 State = GameState.InGame;
             });

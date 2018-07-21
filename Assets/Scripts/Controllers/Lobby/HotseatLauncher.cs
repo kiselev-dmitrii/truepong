@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 namespace TruePong.Controllers.Lobby {
     public class HotseatLauncher : IGameLauncher {
+        private readonly String lobbyScene;
+        private readonly String gameScene;
         private GameState state;
 
         public event Action OnStateChanged;
@@ -15,9 +17,11 @@ namespace TruePong.Controllers.Lobby {
             }
         }
 
-        public HotseatLauncher() {
-            state = GameState.Menu;
+        public HotseatLauncher(String lobbyScene, String gameScene) {
+            this.lobbyScene = lobbyScene;
+            this.gameScene = gameScene;
 
+            state = GameState.Menu;
         }
 
         public void StartGame() {
@@ -27,7 +31,7 @@ namespace TruePong.Controllers.Lobby {
             State = GameState.Starting;
 
             PhotonNetwork.offlineMode = true;
-            SceneLoader.LoadScene("Scenes/Game", (scene) => {
+            SceneLoader.LoadScene(gameScene, (scene) => {
                 State = GameState.InGame;
             });
         }
@@ -38,7 +42,7 @@ namespace TruePong.Controllers.Lobby {
             }
 
             State = GameState.Leaving;
-            SceneLoader.LoadScene("Scenes/Lobby", (scene) => {
+            SceneLoader.LoadScene(lobbyScene, (scene) => {
                 State = GameState.Menu;
             });
         }

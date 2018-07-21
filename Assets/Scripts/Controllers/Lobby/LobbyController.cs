@@ -16,7 +16,6 @@ namespace TruePong.Controllers.Lobby {
         Starting,
         InGame,
         Leaving
-
     }
 
     public interface IGameLauncher {
@@ -29,9 +28,11 @@ namespace TruePong.Controllers.Lobby {
 
     public class LobbyController {
         public GameMode GameMode { get; private set; }
-
         public GameState GameState { get { return currentLauncher.State; } }
         public event Action OnGameStateChanged;
+
+        private const String lobbyScene = "Scenes/Lobby";
+        private const String gameScene = "Scenes/Game";
 
         private readonly GameDef gameDef;
         private readonly Dictionary<GameMode, IGameLauncher> launchers;
@@ -40,8 +41,8 @@ namespace TruePong.Controllers.Lobby {
         public LobbyController(GameDef gameDef) {
             this.gameDef = gameDef;
             launchers = new Dictionary<GameMode, IGameLauncher>() {
-                {GameMode.Hotseat, new HotseatLauncher()},
-                {GameMode.Multiplayer, MultiplayerLauncher.Create()}
+                {GameMode.Hotseat, new HotseatLauncher(lobbyScene, gameScene)},
+                {GameMode.Multiplayer, MultiplayerLauncher.Create(lobbyScene, gameScene, 2)}
             };
 
             SetMode(GameMode.Hotseat);
