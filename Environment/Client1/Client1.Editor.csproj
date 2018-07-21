@@ -172,7 +172,6 @@
     <Compile Include="Assets\TrueSync\Unity\Editor\TSVectorDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Deprecated\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />

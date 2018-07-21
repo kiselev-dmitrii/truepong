@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TruePong.Controllers.Lobby {
-    public enum NetworkState {
-        Disconnected,
-        Connected,
-        InGame
-    }
-
     public class MultiplayerLauncher : Photon.PunBehaviour, IGameLauncher {
-        public const int MaxPlayers = 2;
-        public NetworkState state { get; private set; }
+        public event Action OnStateChanged;
+        public GameState State {
+            get { return state; }
+            set {
+                state = value;
+                OnStateChanged.TryCall();
+            }
+        }
 
-        private Action<Scene> onConnectionSucced;
-        private Action onConnectionFailed;
+        private GameState state;
+        private byte maxPlayers = 2;
 
         public static MultiplayerLauncher Create() {
             var result = new GameObject(typeof(MultiplayerLauncher).Name)
@@ -26,62 +26,62 @@ namespace TruePong.Controllers.Lobby {
 
         private void Initialize() {
             DontDestroyOnLoad(gameObject);
-            state = NetworkState.Disconnected;
+            state = GameState.Menu;
+
             var view = gameObject.AddComponent<PhotonView>();
             view.viewID = 1;
         }
 
-        public void StartGame(Action<Scene> onSuccess, Action onFail) {
-            if (state != NetworkState.Disconnected) {
-                throw new InvalidOperationException("Game must be disconnected");
+        public void StartGame() {
+            if (state != GameState.Menu) {
+                throw new InvalidOperationException();
             }
 
-            onConnectionSucced = onSuccess;
-            onConnectionFailed = onFail;
-
+            State = GameState.Starting;
             PhotonNetwork.offlineMode = false;
             PhotonNetwork.ConnectUsingSettings("v1.0");
         }
 
-        public void LeaveGame(Action<Scene> onSuccess) {
+        public void LeaveGame() {
             switch (state) {
-                case NetworkState.Disconnected:
+                case GameState.Menu:
                     throw new InvalidOperationException("You are not in game");
 
-                case NetworkState.Connected:
+                case GameState.Starting:
                     PhotonNetwork.Disconnect();
-                    state = NetworkState.Disconnected;
-                    onSuccess.TryCall(SceneLoader.GetActiveScene());
+                    State = GameState.Menu;
                     break;
 
-                case NetworkState.InGame:
+                case GameState.InGame:
                     PhotonNetwork.Disconnect();
                     SceneLoader.LoadScene("Scenes/Lobby", (scene) => {
-                        state = NetworkState.Disconnected;
-                        onSuccess.TryCall(scene);
+                        State = GameState.Menu;
                     });
                     break;
             }
         }
 
         public override void OnJoinedLobby() {
-            state = NetworkState.Connected;
             var roomOptions = new RoomOptions() {
-                MaxPlayers = MaxPlayers
+                MaxPlayers = maxPlayers
             };
 
             PhotonNetwork.JoinOrCreateRoom("room1", roomOptions, null);
         }
 
         public override void OnConnectionFail(DisconnectCause cause) {
-            state = NetworkState.Disconnected;
-            onConnectionFailed.TryCall();
-            onConnectionFailed = null;
+            State = GameState.Menu;
         }
 
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer) {
-            if (PhotonNetwork.playerList.Length >= MaxPlayers && PhotonNetwork.isMasterClient) {
+            if (PhotonNetwork.playerList.Length >= maxPlayers && PhotonNetwork.isMasterClient) {
                 photonView.RPC("StartMatch", PhotonTargets.All);
+            }
+        }
+
+        public override void OnPhotonPlayerDisconnected(PhotonPlayer disconnetedPlayer) {
+            if (PhotonNetwork.playerList.Length == 1) {
+                LeaveGame();
             }
         }
 
@@ -89,8 +89,7 @@ namespace TruePong.Controllers.Lobby {
         public void StartMatch() {
             PhotonNetwork.LoadLevel("Scenes/Game");
             SceneLoader.WaitLoading((scene) => {
-                state = NetworkState.InGame;
-                onConnectionSucced.TryCall(scene);
+                State = GameState.InGame;
             });
         }
     }

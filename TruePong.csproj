@@ -94,26 +94,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Deprecated\Demo\Boxes\GameSyncManager.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Boxes\SimpleControl.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Kickingheads\scripts\BallBehavior.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Kickingheads\scripts\GameEndHandler.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Kickingheads\scripts\GoalBehavior.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Kickingheads\scripts\PlayerBehavior.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Lock.io\LockPlayer.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Lock.io\TopDownCamera.cs" />
-    <Compile Include="Assets\Deprecated\Demo\MatchJoiner.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Menu.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Pong\Scripts\BallController.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Pong\Scripts\PaddleController.cs" />
-    <Compile Include="Assets\Deprecated\Demo\Pong\Scripts\PongSyncManager.cs" />
-    <Compile Include="Assets\Deprecated\Demo\ReplayPicker.cs" />
-    <Compile Include="Assets\Deprecated\Demo\ReplayUtils.cs" />
-    <Compile Include="Assets\Deprecated\Demo\SimulationPanelScript.cs" />
-    <Compile Include="Assets\Deprecated\OldScenes\MainMenu.cs" />
-    <Compile Include="Assets\Deprecated\OldScenes\PlayerMovement.cs" />
-    <Compile Include="Assets\Deprecated\OldScenes\PlayerWeapon.cs" />
-    <Compile Include="Assets\Deprecated\OldScenes\Projectile.cs" />
     <Compile Include="Assets\Packages\NData\BaseBinding.cs" />
     <Compile Include="Assets\Packages\NData\Binding.cs" />
     <Compile Include="Assets\Packages\NData\BooleanBinding.cs" />
@@ -215,7 +195,6 @@
     <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
     <Compile Include="Assets\Scripts\UI\GameScreen.cs" />
     <Compile Include="Assets\Scripts\UI\MainScreen.cs" />
-    <Compile Include="Assets\Scripts\UI\WaitWindow.cs" />
     <Compile Include="Assets\Scripts\Utils\ActionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Popup.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneLoader.cs" />
@@ -464,7 +443,6 @@
     <Compile Include="Assets\TrueSync\Unity\UnityUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Deprecated\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />

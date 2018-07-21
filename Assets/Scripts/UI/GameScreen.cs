@@ -42,7 +42,7 @@ namespace TruePong.UI {
         }
 
         public void OnLeaveButtonClick() {
-            lobbyController.LeaveGame(null);
+            lobbyController.LeaveGame();
         }
     }
 }

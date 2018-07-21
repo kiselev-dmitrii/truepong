@@ -4,6 +4,7 @@ using TruePong.Defs;
 using TruePong.UI;
 using TrueSync.Physics3D;
 using UnityEngine;
+using Object = System.Object;
 
 namespace TruePong {
     public class Application : MonoBehaviour {
@@ -23,6 +24,7 @@ namespace TruePong {
         }
 
         private LobbyController lobbyController;
+        private MainScreen mainScreen;
 
         private void Initialize() {
             lobbyController = new LobbyController(gameDef);
@@ -38,9 +40,13 @@ namespace TruePong {
 
         private void OnGameStateChanged() {
             if (lobbyController.GameState == GameState.Menu) {
-                var mainScreen = new MainScreen(lobbyController);
+                mainScreen = new MainScreen(lobbyController);
                 mainScreen.SetActive(true);
             }
+            if (lobbyController.GameState == GameState.InGame) {
+                mainScreen.Dispose();
+            }
+
         }
     }
 }

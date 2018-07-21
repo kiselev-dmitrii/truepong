@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TruePong.Defs;
 using TruePong.GamePlay;
 using TruePong.Utils;
-using UnityEngine.SceneManagement;
+
 
 namespace TruePong.Controllers.Lobby {
     public enum GameMode {
@@ -20,14 +20,17 @@ namespace TruePong.Controllers.Lobby {
     }
 
     public interface IGameLauncher {
-        void StartGame(Action<Scene> onSuccess, Action onFail);
-        void LeaveGame(Action<Scene> onSuccess);
+        GameState State { get; }
+        event Action OnStateChanged;
+
+        void StartGame();
+        void LeaveGame();
     }
 
     public class LobbyController {
         public GameMode GameMode { get; private set; }
 
-        public GameState GameState { get; private set; }
+        public GameState GameState { get { return currentLauncher.State; } }
         public event Action OnGameStateChanged;
 
         private readonly GameDef gameDef;
@@ -41,42 +44,41 @@ namespace TruePong.Controllers.Lobby {
                 {GameMode.Multiplayer, MultiplayerLauncher.Create()}
             };
 
-            SetGameState(GameState.Menu, false);
             SetMode(GameMode.Hotseat);
         }
 
         public void SetMode(GameMode mode) {
-            currentLauncher = launchers[mode];
-            GameMode = mode;
-        }
-
-        public void StartGame(Action onSuccess, Action onFailed) {
-            SetGameState(GameState.Starting);
-            currentLauncher.StartGame(
-                (scene) => {
-                    var initializator = scene.GetComponent<GameInitializator>();
-                    initializator.Initialize(gameDef, this);
-                    SetGameState(GameState.InGame);
-                    onSuccess.TryCall();
-                },
-                () => {
-                    SetGameState(GameState.Menu);
-                    onFailed.TryCall();
+            if (currentLauncher != null) {
+                if (currentLauncher.State != GameState.Menu) {
+                    throw new InvalidOperationException("You cannot change GameMode in state:" + currentLauncher.State);
                 }
-            );
+                currentLauncher.OnStateChanged -= OnStateChanged;
+            }
+
+            GameMode = mode;
+            currentLauncher = launchers[GameMode];
+
+            if (currentLauncher != null) {
+                currentLauncher.OnStateChanged += OnStateChanged;
+            }
         }
 
-        public void LeaveGame(Action onSuccess) {
-            SetGameState(GameState.Leaving);
-            currentLauncher.LeaveGame((scene) => {
-                SetGameState(GameState.Menu);
-                onSuccess.TryCall();
-            });
+        public void StartGame() {
+            currentLauncher.StartGame();
         }
 
-        private void SetGameState(GameState gameState, bool raiseEvent = true) {
-            GameState = gameState;
-            if (raiseEvent) OnGameStateChanged.TryCall();
+        public void LeaveGame() {
+            currentLauncher.LeaveGame();
+        }
+
+        private void OnStateChanged() {
+            if (GameState == GameState.InGame) {
+                var scene = SceneLoader.GetActiveScene();
+                var initializtor = scene.GetComponent<GameInitializator>();
+                initializtor.Initialize(gameDef, this);
+            }
+
+            OnGameStateChanged.TryCall();
         }
     }
 }

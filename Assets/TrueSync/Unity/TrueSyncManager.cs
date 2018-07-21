@@ -248,8 +248,6 @@ namespace TrueSync {
             );
 
             if (ReplayRecord.replayMode == ReplayMode.LOAD_REPLAY) {
-                ReplayPicker.replayToLoad.Load();
-
                 ReplayRecord replayRecord = ReplayRecord.replayToLoad;
                 if (replayRecord == null) {
                     Debug.LogError("Replay Record can't be loaded");
