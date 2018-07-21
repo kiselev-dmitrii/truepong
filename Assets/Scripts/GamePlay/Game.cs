@@ -53,10 +53,11 @@ namespace TruePong.GamePlay {
         }
 
         public void Restart() {
-            ball.Reset(ballSpawnPoint.position);
 
             ballIdx = TSRandom.Range(0, gameDef.Balls.Length);
             ball.Configure(gameDef.Balls[ballIdx]);
+            ball.Reset(ballSpawnPoint.position);
+
         }
 
         private void OnScoreChanged() {

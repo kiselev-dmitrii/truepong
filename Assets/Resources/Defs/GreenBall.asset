@@ -16,3 +16,4 @@ MonoBehaviour:
   Size:
     _serializedValue: 171798688
   Color: {r: 0.2827587, g: 1, b: 0, a: 1}
+  DirectionGenerator: {fileID: 11400000, guid: 67a3a14ea6c33c54f9f2200ba5e3246a, type: 2}

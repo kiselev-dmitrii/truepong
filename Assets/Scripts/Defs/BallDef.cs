@@ -1,3 +1,4 @@
+using TruePong.Defs.DirectionGenerator;
 using TrueSync;
 using UnityEngine;
 
@@ -7,5 +8,6 @@ namespace TruePong.Defs {
         public FP Speed;
         public FP Size;
         public Color Color;
+        public BaseDirectionGenerator DirectionGenerator;
     }
 }

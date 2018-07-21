@@ -184,6 +184,9 @@
     <Compile Include="Assets\Scripts\Controllers\Lobby\LobbyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\Lobby\MultiplayerLauncher.cs" />
     <Compile Include="Assets\Scripts\Defs\BallDef.cs" />
+    <Compile Include="Assets\Scripts\Defs\DirectionGenerator\BaseDirectionGenerator.cs" />
+    <Compile Include="Assets\Scripts\Defs\DirectionGenerator\RandomDirectionGenerator.cs" />
+    <Compile Include="Assets\Scripts\Defs\DirectionGenerator\SpreadDirectionGenerator.cs" />
     <Compile Include="Assets\Scripts\Defs\GameDef.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
     <Compile Include="Assets\Scripts\GamePlay\BallRenderer.cs" />
@@ -457,6 +460,7 @@
     <None Include="Assets\TrueSync\Physics\readme.txt" />
     <None Include="Assets\TrueSync\link.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

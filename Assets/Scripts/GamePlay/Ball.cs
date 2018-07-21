@@ -1,4 +1,5 @@
 ﻿using TruePong.Defs;
+using TruePong.Defs.DirectionGenerator;
 using TrueSync;
 using UnityEngine;
 
@@ -16,10 +17,12 @@ namespace TruePong.GamePlay {
         [AddTracking]
         private FP speed = 1;
 
+        private BaseDirectionGenerator directionGenerator;
+
         public void Reset(TSVector2 position) {
             tsTransform2D.position = position;
             rigidBody.position = position;
-            direction = GenerateRandomDirection();
+            direction = directionGenerator.GenerateDirection();
         }
 
         public void Configure(BallDef ballDef) {
@@ -27,6 +30,7 @@ namespace TruePong.GamePlay {
             boxCollider.size = TSVector2.one * ballDef.Size;
             renderer.SetColor(ballDef.Color);
             renderer.SetSize(ballDef.Size.AsFloat());
+            directionGenerator = ballDef.DirectionGenerator;
         }
 
         public void OnSyncedCollisionEnter(TSCollision2D other) {
@@ -36,15 +40,6 @@ namespace TruePong.GamePlay {
 
         public override void OnSyncedUpdate() {
             rigidBody.position += direction * TrueSyncManager.DeltaTime * speed;
-        }
-
-        private static TSVector2 GenerateRandomDirection() {
-            var angle = TSRandom.Range(0.0f, 360.0f);
-
-            TSVector2 result;
-            result.x = TSMath.Cos(angle);
-            result.y = TSMath.Sin(angle);
-            return result;
         }
     }
 }
