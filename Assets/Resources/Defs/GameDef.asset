@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3b98840e0facd40a1524c3588e99aa, type: 3}
   m_Name: GameDef
   m_EditorClassIdentifier: 
+  EnemyColor: {r: 1, g: 0, b: 0, a: 1}
+  PlayerColor: {r: 0, g: 0.6275863, b: 1, a: 1}
   Balls:
   - {fileID: 11400000, guid: b48a31326240ca7458a77ff0abdbfc04, type: 2}
   - {fileID: 11400000, guid: 87b5b74fb4cf14445b637f99cd1f78f6, type: 2}

@@ -33,20 +33,23 @@ namespace TruePong.GamePlay {
             if (PhotonNetwork.offlineMode) {
                 var paddle1 = TrueSyncManager.SyncedInstantiate(paddlePrefab.gameObject).GetComponent<Paddle>();
                 paddle1.owner = TrueSyncManager.LocalPlayer;
+                paddle1.SetColor(gameDef.PlayerColor);
                 game.AddPlayer(paddle1, 0);
 
                 var paddle2 = TrueSyncManager.SyncedInstantiate(paddlePrefab.gameObject).GetComponent<Paddle>();
                 paddle2.owner = TrueSyncManager.LocalPlayer;
+                paddle2.SetColor(gameDef.EnemyColor);
                 game.AddPlayer(paddle2, 1);
 
             } else {
                 foreach (var player in TrueSyncManager.Players) {
                     var paddle = TrueSyncManager.SyncedInstantiate(paddlePrefab.gameObject).GetComponent<Paddle>();
                     paddle.owner = player;
+                    var color = player == TrueSyncManager.LocalPlayer ? gameDef.PlayerColor : gameDef.EnemyColor;
+                    paddle.SetColor(color);
                     game.AddPlayer(paddle, 0);
                 }
             }
-
 
             var playerGate = game.Gates.First(x => x.Paddle.owner == TrueSyncManager.LocalPlayer);
             if (playerGate.Side == GateSide.Top) {

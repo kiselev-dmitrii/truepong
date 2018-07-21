@@ -185,12 +185,14 @@
     <Compile Include="Assets\Scripts\Defs\BallDef.cs" />
     <Compile Include="Assets\Scripts\Defs\GameDef.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\BallRenderer.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Game.cs" />
     <Compile Include="Assets\Scripts\GamePlay\GameInitializator.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Gate.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Paddle.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PaddleKeyboardController.cs" />
     <Compile Include="Assets\Scripts\GamePlay\PaddleTouchController.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\SpriteColor.cs" />
     <Compile Include="Assets\Scripts\GamePlay\TriggerZone.cs" />
     <Compile Include="Assets\Scripts\UI\GameScreen.cs" />
     <Compile Include="Assets\Scripts\UI\MainScreen.cs" />

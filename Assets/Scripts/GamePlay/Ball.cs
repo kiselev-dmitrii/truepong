@@ -9,7 +9,7 @@ namespace TruePong.GamePlay {
         [SerializeField]
         private TSBoxCollider2D boxCollider;
         [SerializeField]
-        private SpriteRenderer spriteRenderer;
+        private BallRenderer renderer;
 
         [AddTracking]
         private TSVector2 direction;
@@ -25,7 +25,8 @@ namespace TruePong.GamePlay {
         public void Configure(BallDef ballDef) {
             speed = ballDef.Speed;
             boxCollider.size = TSVector2.one * ballDef.Size;
-            spriteRenderer.color = ballDef.Color;
+            renderer.SetColor(ballDef.Color);
+            renderer.SetSize(ballDef.Size.AsFloat());
         }
 
         public void OnSyncedCollisionEnter(TSCollision2D other) {

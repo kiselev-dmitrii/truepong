@@ -9,6 +9,8 @@ namespace TruePong.GamePlay {
         [SerializeField]
         private TSRigidBody2D rigidBody;
         [SerializeField]
+        private SpriteColor spriteColor;
+        [SerializeField]
         private FP maxOffset;
         [SerializeField]
         private GameObject handle;
@@ -21,12 +23,21 @@ namespace TruePong.GamePlay {
         public void SetAnchor(TSTransform2D anchor) {
             this.anchor = anchor;
 
+            transform.parent = anchor.transform;
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
+
             tsTransform2D.tsParent = anchor;
             tsTransform2D.position = anchor.position;
             tsTransform2D.rotation = anchor.rotation;
             tsTransform2D.scale = TSVector.one;
 
             SetOffset(0);
+        }
+
+        public void SetColor(Color color) {
+            spriteColor.SetColor(color);
         }
 
         public void SetOffset(FP value) {
