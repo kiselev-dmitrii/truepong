@@ -1,28 +1,28 @@
-## Игра PingPong.
+## PingPong Game.
 
-Игра имеет два режима: 
+The game has to modes: 
 - Hotseat
-	Игра на одном устройстве.
+	Playing on the single device.
 - Multiplayer.
-	Игра на разных устройствах
+	Playing on two different devices.
 
-Предполагается, что игра запускается с портретной ориентацией экрана.
-Протестированные разрешения:
+The game is intended to be launched in portrait orientation.
+Tested resolutions:
 - 720x1280
 - 1440x2560
 
-Сетевая часть реализована на Photon True Sync. Для работы мультплеера необходим интернет, то есть локальный мультиплеер не доступен.
+The networking part is implemented using Photon True Sync. Internet connection is required for multiplayer, so local multiplayer is not available.
 
-Управление ракетками осуществляется через Drag по ракетке.
+The paddles are controlled by dragging on the paddle.
 
-Для запуска в редакторе Unity необходимо выбрать сцену Lobby и нажать Play. То есть Lobby - это главная сцена.
+To launch the game in the Unity editor, select the Lobby scene and press Play. So, the Lobby scene is the main scene.
 
-Конфигурация баланса игры осуществляется через ScriptableObjects, которые находятся в директории Assets/Resources/Defs.
-Файл GameDef содержит цвета вражеской платформы и платформы игрока. Также содержит набор конфигураций для различных шаров.
-BallDef содержит настройки размера, скорости, цвета и позволяет выбрать алгоритм генерации направления шара.
+The game balance configuration is done through ScriptableObjects located in the Assets/Resources/Defs directory.
+The GameDef file contains colors for the enemy platform and the player's platform. It also contains a set of configurations for different balls.
+The BallDef file contains settings for size, speed, color, and allows selecting the ball's direction generation algorithm.
 
-Алгоритмы направления шара:
-- RandomDirectionGenerator - начальное направление шара полностью случайно.
-- SpreadDirectionGenerator - генерирует направление в направлении случайного игрока с разбросом в SpreadAngle.
+Ball direction generation algorithms:
+- RandomDirectionGenerator - generates initial direction of the ball completely randomly.
+- SpreadDirectionGenerator - generates initial direction of the ball in the direction of random player with spread of SpreadAngle.
 
-Последнюю версию для Android можно скачать по ссылке https://bitbucket.org/sollinux/truepong/downloads/TruePong.apk
+You can download the latest version for Android from the following link: https://bitbucket.org/sollinux/truepong/downloads/TruePong.apk
